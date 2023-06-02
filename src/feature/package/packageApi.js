@@ -16,7 +16,21 @@ export const addPackageApi = apiSlice.injectEndpoints({
     getPackage: builder.query({
       query: () => "/packages",
     }),
+    getSinglePackage: builder.query({
+      query: (name) => `/packages?name_like=${name}`,
+    }),
+    updatePackage: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/packages/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+    }),
+    getIdPack:builder.query({
+      query:(id) =>`/packages/${id}`
+    })
   }),
 });
 
-export const { useAddPackageMutation, useGetPackageQuery } = addPackageApi;
+export const { useAddPackageMutation, useGetPackageQuery, useGetSinglePackageQuery, useUpdatePackageMutation,useGetIdPackQuery } =
+  addPackageApi;

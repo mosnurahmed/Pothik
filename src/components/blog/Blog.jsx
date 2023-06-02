@@ -1,106 +1,40 @@
-import cox from '../../assets/coxbazar.jpg'
-import sajek from '../../assets/sajek.jpg'
-import sylhet from '../../assets/img_2.png'
-import './blog.css'
+import cox from "../../assets/coxbazar.jpg";
+import sajek from "../../assets/sajek.jpg";
+import sylhet from "../../assets/img_2.png";
+import "./blog.css";
+import SingleBlog from "./SingleBlog";
+import { useGetLimitedBlogsQuery } from "../../feature/blog/blogApi";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
+  const { data: blogs, isLoading, isError } = useGetLimitedBlogsQuery();
+
+  let content = null;
+
+  if (isLoading) {
+    content = <li className="m-2 text-center">Loading...</li>;
+  } else if (!isLoading && isError) {
+    content = <div>There was an error!!!</div>;
+  } else if (!isLoading && !isError && blogs?.length === 0) {
+    content = <div>There was no BLog Available</div>;
+  } else if (!isLoading && !isError && blogs?.length > 0) {
+    content = blogs.map((blog) => <SingleBlog blog={blog} />);
+  }
+
   return (
-    <section className="my-24 px-24 bg-[#F5FFFC]">
-    <div className="flex gap-x-8">
-      <div className="w-1/3 shadow-lg">
-          <div className="mb-4">
-            <img
-              className="w-full"
-              src={cox}
-              alt="SYLHET"
-            />
-          </div>
-          <div>
-            <div className="flex justify-between mx-3">
-              <h2 className="text-[#2ED89B] text-2xl font-semibold">Cox's Bazar</h2>
-            </div>
-            
-            <p className="w-10/12 text-[#6F6F6F] text-lg mx-3">
-              Lorem ipsum dolor sit amet This is Photoshop’s version of Lorem
-              Ipsn gravida. Ing business like this takes much more effort than
-              doing your own.
-            </p>
-          </div>
-          <div className='flex justify-start gap-11 mt-11 mb-5'>
-            <div className='ml-5'>
-              <a href='#'><p><b>March 5, 2023</b></p></a>
-            </div>
-            <div>
-            <a href='#'><p><b>10 comments</b></p></a>
-            </div>
-          </div>
-        </div>
-
-
-        <div className="w-1/3 shadow-lg">
-          <div className="mb-4">
-            <img
-              className="w-full"
-              src={sylhet}
-              alt="SYLHET"
-            />
-          </div>
-          <div>
-            <div className="flex justify-between mx-3">
-              <h2 className="text-[#2ED89B] text-2xl font-semibold">Sylhet</h2>
-            </div>
-            
-            <p className="w-10/12 text-[#6F6F6F] text-lg mx-3">
-              Lorem ipsum dolor sit amet This is Photoshop’s version of Lorem
-              Ipsn gravida. Ing business like this takes much more effort than
-              doing your own.
-            </p>
-          </div>
-          <div className='flex justify-start gap-11 mt-11 mb-5'>
-            <div className='ml-5'>
-              <a href='#'><p><b>March 5, 2023</b></p></a>
-            </div>
-            <div>
-            <a href='#'><p><b>10 comments</b></p></a>
-            </div>
-          </div>
-        </div>
-
-        <div className="w-1/3 shadow-lg">
-          <div className="mb-4">
-            <img
-              className="w-full"
-              src={sajek}
-              alt="SYLHET"
-            />
-          </div>
-          <div>
-            <div className="flex justify-between mx-3">
-              <h2 className="text-[#2ED89B] text-2xl font-semibold">Sajek</h2>
-            </div>
-            
-            <p className="w-10/12 text-[#6F6F6F] text-lg mx-3">
-              Lorem ipsum dolor sit amet This is Photoshop’s version of Lorem
-              Ipsn gravida. Ing business like this takes much more effort than
-              doing your own.
-            </p>
-          </div>
-          <div className='flex justify-start gap-11 mt-11 mb-5'>
-            <div className='ml-5'>
-              <a href='#'><p><b>March 5, 2023</b></p></a>
-            </div>
-            <div>
-            <a href='#'><p><b>10 comments</b></p></a>
-            </div>
-          </div>
-        </div>
+    <section className="w-10/12 py-20 m-auto ">
+      <div className="text-centers ">
+        <h1 className="title text-[#2ED89B] text-center text-4xl font-semibold uppercase">Most Popular Blogs</h1>
       </div>
+      <div className="grid grid-cols-3  row-auto justify-items-center gap-y-12 pt-20">{content}</div>
 
       <div className="mt-12 flex justify-center items-center">
-        <a className="bg-[#FFCE0C] text-slate-100 px-6 py-2 rounded" href="#">More</a>
+        <Link to="/blogs" className="bg-[#FFCE0C] text-slate-100 px-6 py-2 rounded" href="#">
+          More
+        </Link>
       </div>
-  </section>
-  )
-}
+    </section>
+  );
+};
 
-export default Blog
+export default Blog;

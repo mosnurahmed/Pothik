@@ -1,12 +1,55 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import "./admin.css";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import { Link } from "react-router-dom";
+import { useGetPackageQuery } from "../../feature/package/packageApi";
+import { useGetBookingQuery } from "../../feature/booking/bookingApi";
+import TableData from "./TableData";
+import SeatPlan from "./SeatPlan";
+
+import Seat from "./Seat";
+import Package from "./Package";
 
 const Admin = () => {
+  const [toggle, setToggle] = useState(false);
+  const [request, setRequest] = useState(true);
+  const [name, setName] = useState("");
+  const { data: packages, isLoading: loadingPackage, isError: pacageError } = useGetPackageQuery();
+  const {
+    data: passengers,
+    isLoading,
+    isError,
+  } = useGetBookingQuery(name, {
+    skip: request,
+  });
+
+  const toggleHandle = (event) => {
+    setName(event.target.textContent);
+    setRequest(false);
+
+    setToggle(!toggle);
+  };
+
+  // package content
+
+  let packageContent = null;
+
+  if (isLoading) {
+    packageContent = <li className="m-2 text-center">Loading...</li>;
+  } else if (!isLoading && isError) {
+    packageContent = <div>There was an error!!!</div>;
+  } else if (!isLoading && !isError && packages?.length === 0) {
+    packageContent = <div>There was no Package Available</div>;
+  } else if (!isLoading && !isError && packages?.length > 0) {
+    packageContent = packages.map((p) => {
+      return <Package p={p} />;
+    });
+  }
+
   return (
     <div>
+      <Header />
       <section className="banner text-6xl font-bold text-slate-100">
         <span className="admin_title">Welcome Admin</span>
       </section>
@@ -24,248 +67,7 @@ const Admin = () => {
               <h1 className="text-2xl text-[#2ED89B]">Active Packages</h1>
               <p className="text-[8px]">Click to view detials</p>
             </div>
-
-            <div className="my-4">
-              <button className="accordion text-xl font-bold uppercase">Kuakata</button>
-
-              <div className="panel uppercase text-xl">
-                <div className="py-2">
-                  <p className="py-2">Bus No</p>
-                  <div className="flex gap-4 text-slate-50">
-                    <div className="bg-[#7ECC71] px-4 py-2">1</div>
-                    <div className="bg-[#D9D9D9] px-4 py-2">2</div>
-                    <div className="bg-[#D9D9D9] px-4 py-2">3</div>
-                  </div>
-                </div>
-
-                <div className="flex gap-12 justify-between items-center my-4 gap-6">
-                  <div className="flex bg-[#D9D9D9] w-[40%] h-[680px] justify-between shrink-0 p-8">
-                    <div className="grid grid-cols-2 gap-6 text-gray-800">
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">A1</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">A2</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">B1</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">B2</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">C1</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">C2</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">D1</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">D2</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">E1</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">E2</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">F1</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">F2</div>
-                      <div className="bg-[#F3BCBC] px-4 py-2 flex justify-center items-center">G1</div>
-                      <div className="bg-[#F3BCBC] px-4 py-2 flex justify-center items-center">G2</div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-6 text-gray-800">
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">A3</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">A4</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">B3</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">B4</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">C3</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">C4</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">D3</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">D4</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">E3</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">E4</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">F3</div>
-                      <div className="bg-[#7ECC71] px-4 py-2 flex justify-center items-center">F4</div>
-                      <div className="bg-[#F3BCBC] px-4 py-2 flex justify-center items-center">G3</div>
-                      <div className="bg-[#F3BCBC] px-4 py-2 flex justify-center items-center">G4</div>
-                    </div>
-                  </div>
-
-                  <div className="bg-[#D9D9D9] text-gray-700">
-                    <table id="first_table" className="text-sm">
-                      <thead>
-                        <tr>
-                          <th className="p-2">SEAT NO</th>
-                          <th className="p-2">PASSENGER NAME</th>
-                          <th className="p-2">dESTINATION</th>
-                          <th className="p-2">pAYMENT STATUS</th>
-                        </tr>
-                      </thead>
-
-                      <tbody className="text-center font-semibold">
-                        <tr>
-                          <td className="py-1 px-2">A1</td>
-                          <td className="py-1 px-2">Medhedi Salem</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">A2</td>
-                          <td className="py-1 px-2">Nusrat Jahan Shorna</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">A3</td>
-                          <td className="py-1 px-2">Farzana Ahmed</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">A4</td>
-                          <td className="py-1 px-2">Layes Uddin</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">B1</td>
-                          <td className="py-1 px-2">Rashed khan</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">B2</td>
-                          <td className="py-1 px-2">Mosnur Ahmed</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">B3</td>
-                          <td className="py-1 px-2">Farzana Ahmed</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">B4</td>
-                          <td className="py-1 px-2">Layes Uddin</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">C1</td>
-                          <td className="py-1 px-2">Rashed Khan</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">C2</td>
-                          <td className="py-1 px-2">Mosnur Ahmed</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">C3</td>
-                          <td className="py-1 px-2">Mehedi Saleh Munna</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">C4</td>
-                          <td className="py-1 px-2">Layes Uddin</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">D1</td>
-                          <td className="py-1 px-2">Medhedi Salem</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">D2</td>
-                          <td className="py-1 px-2">Nusrat Jahan Shorna</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">D3</td>
-                          <td className="py-1 px-2">Farzana Ahmed</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">D4</td>
-                          <td className="py-1 px-2">Layes Uddin</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">E1</td>
-                          <td className="py-1 px-2">Rashed khan</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">E2</td>
-                          <td className="py-1 px-2">Mosnur Ahmed</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">E3</td>
-                          <td className="py-1 px-2">Farzana Ahmed</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">E4</td>
-                          <td className="py-1 px-2">Layes Uddin</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">F1</td>
-                          <td className="py-1 px-2">Rashed Khan</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">F2</td>
-                          <td className="py-1 px-2">Mosnur Ahmed</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">F3</td>
-                          <td className="py-1 px-2">Mehedi Saleh Munna</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr>
-                          <td className="py-1 px-2">F4</td>
-                          <td className="py-1 px-2">Layes Uddin</td>
-                          <td className="py-1 px-2">Kuakata</td>
-                          <td className="py-1 px-2">Paid</td>
-                        </tr>
-                        <tr className="bg-[#f3b9b9] text-[#FF0000]">
-                          <td className="py-1 px-2">G1</td>
-                          <td className="py-1 px-2">Optimize Seat</td>
-                          <td className="py-1 px-2 text-gray-700">N/A</td>
-                          <td className="py-1 px-2 text-gray-700">N/A</td>
-                        </tr>
-                        <tr className="bg-[#f3b9b9] text-[#FF0000]">
-                          <td className="py-1 px-2">G2</td>
-                          <td className="py-1 px-2">Optimize Seat</td>
-                          <td className="py-1 px-2 text-gray-700">N/A</td>
-                          <td className="py-1 px-2 text-gray-700">N/A</td>
-                        </tr>
-                        <tr className="bg-[#f3b9b9] text-[#FF0000]">
-                          <td className="py-1 px-2">G3</td>
-                          <td className="py-1 px-2">Optimize Seat</td>
-                          <td className="py-1 px-2 text-gray-700">N/A</td>
-                          <td className="py-1 px-2 text-gray-700">N/A</td>
-                        </tr>
-                        <tr className="bg-[#f3b9b9] text-[#FF0000]">
-                          <td className="py-1 px-2">G4</td>
-                          <td className="py-1 px-2">Optimize Seat</td>
-                          <td className="py-1 px-2 text-gray-700">N/A</td>
-                          <td className="py-1 px-2 text-gray-700">N/A</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                <div className="my-12 text-md">
-                  <p className="my-4 normal-case text-gray-800">Selected Seat: G1</p>
-                  <button className="btn bg-green-500 px-8 py-1 uppercase rounded-sm">Optimize Seat</button>
-                </div>
-              </div>
-            </div>
+            {packageContent}
           </div>
         </section>
       </main>

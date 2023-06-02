@@ -3,7 +3,7 @@ import heroimage from '../../assets/heroimage.svg'
 import './hero.css'
 const Hero = () => {
   return (
-    <section className="hero_section flex flex-col justify-center items-center text-center">
+    <section className="hero_section w-10/12 m-auto  flex flex-col justify-center items-center text-center">
         <span className="text-5xl font-semibold uppercase text-slate-100 mb-4">
           The journey of a thousand miles <br />
         </span>

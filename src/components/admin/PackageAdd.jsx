@@ -9,49 +9,42 @@ function PackageAdd() {
   const [price, setPrice] = useState("");
   const [route, setRoute] = useState("");
   const [duration, setDuration] = useState("");
-  const [responseError,setResponseError] =useState("")
-  const[addPackage,{data,isLoading,error}]=useAddPackageMutation()
-  const navigate=useNavigate();
+  const [responseError, setResponseError] = useState("");
+  const [addPackage, { data, isLoading, error }] = useAddPackageMutation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-
-    if(error?.data){
-      setResponseError(error.data)
+    if (error?.data) {
+      setResponseError(error.data);
     }
-    if(data?.user && data.accessToken){
-      navigate("/")
+    if (data) {
+      navigate("/");
     }
+  }, [data, navigate, setResponseError, error]);
 
-  }, [data,navigate,setResponseError,error ]);
+  const reset = () => {
+    setName("");
+    setDescription("");
+    setThumbnail("");
+    setPrice("");
+    setRoute("");
+    setDuration("");
+  };
 
-  const reset =()=>{
-    setName("")
-    setDescription("")
-    setThumbnail("")
-    setPrice("")
-    setRoute("")
-    setDuration("")
-  }
+  const handlePost = (e) => {
+    e.preventDefault();
 
-
- 
-
-  const handlePost =(e) =>{
-    e.preventDefault()
-
-  
-    const data ={
+    const data = {
       name,
       description,
       thumbnail,
       price,
       route,
-      duration
-    }
-    addPackage(data)
-    reset()
-  }
-
+      duration,
+    };
+    addPackage(data);
+    reset();
+  };
 
   return (
     <div>
@@ -59,17 +52,37 @@ function PackageAdd() {
       <form onSubmit={handlePost}>
         <input type="text" required placeholder="Package Name" value={name} onChange={(e) => setName(e.target.value)} />
         <br />
-        <input type="text" required placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}/>
+        <input
+          type="text"
+          required
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
         <br />
-        <input type="text" required placeholder="Thumbnail Link"value={thumbnail} onChange={(e) => setThumbnail(e.target.value)} />
+        <input
+          type="text"
+          required
+          placeholder="Thumbnail Link"
+          value={thumbnail}
+          onChange={(e) => setThumbnail(e.target.value)}
+        />
         <br />
-        <input type="number" required placeholder="Price" value={price} onChange={(e) => setPrice(e.target.value)}/>
+        <input type="number" required placeholder="Price" value={price} onChange={(e) => setPrice(e.target.value)} />
         <br />
-        <input type="text" required placeholder="Route"value={route} onChange={(e) => setRoute(e.target.value)} />
+        <input type="text" required placeholder="Route" value={route} onChange={(e) => setRoute(e.target.value)} />
         <br />
-        <input type="date" required placeholder="Duration"value={duration} onChange={(e) => setDuration(e.target.value)} />
+        <input
+          type="date"
+          required
+          placeholder="Duration"
+          value={duration}
+          onChange={(e) => setDuration(e.target.value)}
+        />
         <br />
-        <button type="submit" disabled={isLoading}>Post</button>
+        <button type="submit" disabled={isLoading}>
+          Post
+        </button>
       </form>
       <div>{responseError}</div>
     </div>
