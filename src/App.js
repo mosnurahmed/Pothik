@@ -13,37 +13,37 @@ import BlogDetails from "./components/blogpost/BlogDetails";
 const App = () => {
   const isAuthChecked = useAuthCheck();
 
-  return !isAuthChecked ? (
-    <div>Authentication Checking!!!!</div>
-  ) : (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/blogs" element={<Blogpost />} />
-        <Route path="/registration" element={<Registration />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/addPackage" element={<PackageAdd />} />
-        <Route path="addBlog" element={<AddBlog />} />
-        <Route path="/blogs/:blogId" element={<BlogDetails/>}/>
-      </Routes>
-    </BrowserRouter>
-  );
-  // return(<>
-
+  // return !isAuthChecked ? (
+  //   <div>Authentication Checking!!!!</div>
+  // ) : (
   //   <BrowserRouter>
-  //      <Routes>
+  //     <Routes>
   //       <Route path="/admin" element={<Admin />} />
   //       <Route path="/" element={<Home />} />
   //       <Route path="/blogs" element={<Blogpost />} />
-  //      <Route path="/registration" element={<Registration />} />
+  //       <Route path="/registration" element={<Registration />} />
   //       <Route path="/login" element={<Login />} />
   //       <Route path="/addPackage" element={<PackageAdd />} />
   //       <Route path="addBlog" element={<AddBlog />} />
-  //      </Routes>
-  //    </BrowserRouter>
-  // </>
-  // )
+  //       <Route path="/blogs/:blogId" element={<BlogDetails/>}/>
+  //     </Routes>
+  //   </BrowserRouter>
+  // );
+  return(<>
+
+    <BrowserRouter>
+       <Routes>
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/blogs" element={<Blogpost />} />
+       <Route path="/registration" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/addPackage" element={<PackageAdd />} />
+        <Route path="addBlog" element={<AddBlog />} />
+       </Routes>
+     </BrowserRouter>
+  </>
+  )
 };
 
 export default App;

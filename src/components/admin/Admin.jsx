@@ -50,17 +50,11 @@ const Admin = () => {
   return (
     <div>
       <Header />
-      <section className="banner text-6xl font-bold text-slate-100">
+      <section className="banner text-6xl font-bold w-10/12 m-auto text-slate-100">
         <span className="admin_title">Welcome Admin</span>
       </section>
 
-      <main>
-        <div>
-          <Link to="/addPackage">
-            <button>Add Package</button>
-          </Link>
-        </div>
-
+      <main className="w-10/12 m-auto">
         <section className="mt-12 mb-16 bg-[#fff]">
           <div className="px-24">
             <div className="uppercase text-center py-6">
@@ -68,6 +62,17 @@ const Admin = () => {
               <p className="text-[8px]">Click to view detials</p>
             </div>
             {packageContent}
+          </div>
+          <div className="  text-center">
+            <Link to="/addPackage">
+              <button
+                className=" border-solid text-xl p-5 w-96  text-white bg-teal-400 left-2/4 rounded-md
+
+"
+              >
+                Add Package
+              </button>
+            </Link>
           </div>
         </section>
       </main>

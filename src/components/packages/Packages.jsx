@@ -17,7 +17,7 @@ const Packages = () => {
     content = <div>There was no Package Available</div>;
   } else if (!isLoading && !isError && packages?.length > 0) {
     const displayedPackages = showAll ? packages : packages.slice(0, 3);
-    console.log(displayedPackages);
+ 
     content = displayedPackages.map((pack) => <SinglePackage pack={pack} />);
   }
 

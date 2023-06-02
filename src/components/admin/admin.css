@@ -5,7 +5,7 @@ body {
 .banner {
     background-image: url("../../assets/banner.jpg");
     height: 380px;
-    width: 100%;
+    /* width: 100%; */
     background-position: right;
     background-size: cover;
     object-fit: cover;
@@ -17,4 +17,15 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  .add-pack{
+    background-image: url("https://thumbs.dreamstime.com/b/travel-journey-concept-famous-monuments-world-countries-vector-illustration-travel-journey-concept-famous-monuments-world-99632754.jpg");
+    height: 100vh;
+  
+    /* background-position: right; */
+    background-size: cover;
+    object-fit: cover;
+    border: none;
+    overflow: hidden;
+
   }

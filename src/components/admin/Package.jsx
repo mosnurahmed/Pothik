@@ -81,11 +81,14 @@ function Package({ p }) {
   }, []);
 
   return (
-    <>
-      <div className="my-4">
-        <button className="accordion text-xl font-bold uppercase" onClick={toggleHandle}>
-          {p.name}
-        </button>
+    <div className="ring-offset-2  my-10 py-3 ring" onClick={toggleHandle}>
+      <div className="my-4 pl-20">
+        <div className="grid grid-cols-2 justify-between ">
+          <button className="accordion text-xl font-bold text-left uppercase text-[#2ED89B] ">{p.name}</button>
+          <div className="text-right pr-6">
+            <i class="fa-solid fa-angle-down"></i>
+          </div>
+        </div>
 
         <div className={`panel uppercase text-xl ${toggle ? "" : "hidden"}`}>
           <div className="py-2">
@@ -93,13 +96,18 @@ function Package({ p }) {
             {pageContent}
           </div>
 
-          <div className="flex justify-between items-center my-4 gap-6">
+          <div className="grid grid-cols-2 justify-between my-4 gap-6">
             <div className="grid grid-cols-4 row-auto gap-2 max-w-[450px]">
               {seatPlan.length > 0 &&
-                seatPlan.map((seat, index) => <Seat isBooked={passengers?.slice((currentPage - 1) * perPage, currentPage * perPage).length > index} label={seat} />)}
+                seatPlan.map((seat, index) => (
+                  <Seat
+                    isBooked={passengers?.slice((currentPage - 1) * perPage, currentPage * perPage).length > index}
+                    label={seat}
+                  />
+                ))}
             </div>
 
-            <div className="bg-[#D9D9D9] text-gray-700">
+            <div className="bg-[#D9D9D9] text-gray-700 text-right mr-20">
               <table id="first_table" className="text-sm">
                 <thead>
                   <tr>
@@ -117,7 +125,7 @@ function Package({ p }) {
           <SeatOptimiz p={p} />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

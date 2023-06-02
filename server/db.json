@@ -35,6 +35,12 @@
       "password": "$2a$10$P20bT81P.5j6PFnuRjUipuncaUiEMy6wxdIKywZFJn.lUQoRBcTL.",
       "name": "Test5",
       "id": 6
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$dBodRIZhyvSbFAqtELrGWuf1MtKbZEK/HzBhPfveyf43YT9xtkkSe",
+      "name": "Admin",
+      "id": 7
     }
   ],
   "blogs": [
@@ -219,17 +225,6 @@
       "id": 2
     },
     {
-      "name": "Rangamati",
-      "description": "dhslfjksdfjsakdfsadfasdf",
-      "thumbnail": "https://www.thegolfhousebd.com/wp-content/uploads/2021/12/222222.png",
-      "price": "1200",
-      "route": "Dhaka Borishal",
-      "duration": "2023-05-26",
-      "totalBus": "4",
-      "seatPerBUs": "25",
-      "id": 3
-    },
-    {
       "name": "Kuakata",
       "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
       "thumbnail": "https://images6.fanpop.com/image/photos/41700000/Kuakata-Bangladesh-bangladesh-41724851-1280-720.jpg",
@@ -266,6 +261,17 @@
       "totalBus": "4",
       "seatPerBUs": "25",
       "id": 3
+    },
+    {
+      "name": "Rangamati",
+      "description": "dhslfjksdfjsakdfsadfasdf",
+      "thumbnail": "https://www.thegolfhousebd.com/wp-content/uploads/2021/12/222222.png",
+      "price": "1200",
+      "route": "Dhaka Borishal",
+      "duration": "2D 3N",
+      "totalBus": "4",
+      "seatPerBus": "25",
+      "id": 6
     }
   ]
 }
