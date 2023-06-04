@@ -32,10 +32,10 @@ const Header = () => {
   };
 
   return (
-    <section className="flex justify-around justify-items-center items-center text-slate-200 bg-[#2ED89B] h-20">
+    <section className=" fixed top-0 left-0 w-full flex justify-around justify-items-center items-center text-slate-200 bg-[#2ED89B] h-20">
       <h2 className="text-2xl font-bold text-[#D7FFC9] md:text-xl">
         <Link to="/">
-        <img src={logo} alt="logo" className="logo" />
+          <img src={logo} alt="logo" className="logo" />
         </Link>
       </h2>
 
@@ -57,7 +57,7 @@ const Header = () => {
               <Link to="blogs">Blog</Link>
             </li>
             <li>
-              <Link to="">About Us</Link>
+              <Link to="/aboutUs">About Us</Link>
             </li>
           </ul>
         </div>

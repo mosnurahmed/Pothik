@@ -41,6 +41,12 @@
       "password": "$2a$10$dBodRIZhyvSbFAqtELrGWuf1MtKbZEK/HzBhPfveyf43YT9xtkkSe",
       "name": "Admin",
       "id": 7
+    },
+    {
+      "email": "mosnurahmed01@gmail.com",
+      "password": "$2a$10$RVc3imLrl93O62qhvNVVyu/gDJ8iilnUH0i3z9z3gItx581nuqGVC",
+      "name": "Mosnur",
+      "id": 8
     }
   ],
   "blogs": [
@@ -131,9 +137,8 @@
   ],
   "booking": [
     {
-      "id": 1,
-      "name": "Kuakata",
-      "packageId": 2,
+      "name": "SYLHET",
+      "packageId": 1,
       "traveler": {
         "email": "mosnur@gmail.com",
         "name": "Mosnur",
@@ -141,93 +146,89 @@
       },
       "paymentStatus": true,
       "group": false,
-      "route": "Dhaka Borishal Kuakata"
+      "route": "Dhaka Borishal Kuakata",
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Kuakata",
-      "packageId": 2,
-      "traveler": {
-        "email": "mosnur@gmail.com",
-        "name": "Rithen",
-        "id": 1
-      },
-      "paymentStatus": false,
-      "group": false,
-      "route": "Dhaka Borishal Kuakata"
-    },
-    {
-      "id": 3,
-      "name": "Kuakata",
-      "packageId": 2,
-      "traveler": {
-        "email": "mosnur@gmail.com",
-        "name": "Sorna",
-        "id": 1
-      },
-      "paymentStatus": true,
-      "group": false,
-      "route": "Dhaka Borishal Kuakata"
-    },
-    {
-      "id": 4,
-      "name": "SYLHET",
-      "packageId": 2,
-      "traveler": {
-        "email": "mosnur@gmail.com",
-        "name": "Leas",
-        "id": 1
-      },
-      "paymentStatus": false,
-      "group": false,
-      "route": "Dhaka Borishal"
-    },
-    {
-      "id": 5,
       "name": "SYLHET",
       "packageId": 1,
       "traveler": {
         "email": "mosnur@gmail.com",
-        "name": "Jubayer",
+        "name": "Mosnur",
         "id": 1
       },
-      "paymentStatus": false,
+      "paymentStatus": true,
       "group": false,
-      "route": "Dhaka Borishal"
+      "route": "Dhaka Borishal Kuakata",
+      "id": 2
+    },
+    {
+      "name": "SYLHET",
+      "packageId": 1,
+      "traveler": {
+        "email": "mosnur@gmail.com",
+        "name": "Mosnur",
+        "id": 1
+      },
+      "paymentStatus": true,
+      "group": true,
+      "route": "Dhaka Borishal Kuakata",
+      "id": 3
+    },
+    {
+      "name": "SYLHET",
+      "packageId": 1,
+      "traveler": {
+        "email": "mosnur@gmail.com",
+        "name": "Mosnur",
+        "id": 1
+      },
+      "paymentStatus": true,
+      "group": false,
+      "route": "Dhaka Borishal Kuakata",
+      "id": 4
+    },
+    {
+      "name": "SYLHET",
+      "packageId": 1,
+      "traveler": {
+        "email": "test2@gmail.com",
+        "name": "test2",
+        "id": 4
+      },
+      "paymentStatus": true,
+      "group": false,
+      "route": "Dhaka Borishal Kuakata",
+      "id": 5
     }
   ],
   "packages": [
     {
       "name": "SYLHET",
-      "description": "Lorem ipsum dolor sit amet This is Photoshop’s version of Lorem Ipsn gravida. Ing business like this takes much more effort than doing your own.",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique aliquid a eum totam modi! Necessitatibus dolor, unde odit tenetur ratione sint suscipit porro, quo quisquam magnam explicabo expedita consectetur facere mollitia animi natus id voluptatibus ad molestiae a quaerat quis aut. Temporibus quos voluptatibus ipsa, voluptatem autem blanditiis? Officiis porro, voluptatem ad dicta quis praesentium aliquid obcaecati quae inventore tenetur at voluptatum, nemo ipsum sit! Sapiente vel blanditiis quae dolore unde tempora voluptas adipisci hic aliquid perspiciatis. Earum itaque laudantium tenetur sapiente aliquid consectetur iusto aperiam reprehenderit sint voluptatibus praesentium, veniam debitis magni culpa dolore esse cumque numquam ab voluptate? Culpa repellat ad commodi facilis rem atque tempore, similique recusandae deserunt pariatur vitae porro distinctio quos ut accusamus tempora quod consequuntur debitis sed itaque quae veritatis. Quod, nesciunt exercitationem maxime delectus neque esse cumque quas iusto suscipit vitae doloremque enim temporibus expedita veritatis quam reprehenderit est similique excepturi aperiam soluta!",
       "thumbnail": "https://images.unsplash.com/photo-1599137248983-e6061c27ec80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3lsaGV0JTJDJTIwYmFuZ2xhZGVzaHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
       "price": "1500",
-      "route": [
-        "Dhaka",
-        "Chitagong"
-      ],
+      "route": "Dhaka Borishal Kuakata",
       "duration": "2023-05-27",
       "totalBus": "4",
       "seatPerBUs": "25",
-      "totalPassenger": "100",
+      "totalPassenger": "7",
       "id": 1
     },
     {
       "name": "Kuakata",
-      "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+      "description": "Kuakata is a town in southern Bangladesh known for its panoramic sea beach. Kuakata beach is a sandy expanse 18 kilometres long and 3 kilometres wide. From the beach one can have an unobstructed view of both sunrise and sunset over the Bay of Bengal.",
       "thumbnail": "https://images6.fanpop.com/image/photos/41700000/Kuakata-Bangladesh-bangladesh-41724851-1280-720.jpg",
       "price": "1600",
       "duration": "2023-05-22",
       "totalBus": "4",
       "seatPerBus": "25",
       "totalPassenger": "96",
-      "route": "Dhaka Borishal Kuakata",
       "id": 2
     },
     {
-      "name": "Kuakata",
-      "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-      "thumbnail": "https://images6.fanpop.com/image/photos/41700000/Kuakata-Bangladesh-bangladesh-41724851-1280-720.jpg",
+      "name": "SYLHET",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique aliquid a eum totam modi! Necessitatibus dolor, unde odit tenetur ratione sint suscipit porro, quo quisquam magnam explicabo expedita consectetur facere mollitia animi natus id voluptatibus ad molestiae a quaerat quis aut. Temporibus quos voluptatibus ipsa, voluptatem autem blanditiis? Officiis porro, voluptatem ad dicta quis praesentium aliquid obcaecati quae inventore tenetur at voluptatum, nemo ipsum sit! Sapiente vel blanditiis quae dolore unde tempora voluptas adipisci hic aliquid perspiciatis. Earum itaque laudantium tenetur sapiente aliquid consectetur iusto aperiam reprehenderit sint voluptatibus praesentium, veniam debitis magni culpa dolore esse cumque numquam ab voluptate? Culpa repellat ad commodi facilis rem atque tempore, similique recusandae deserunt pariatur vitae porro distinctio quos ut accusamus tempora quod consequuntur debitis sed itaque quae veritatis. Quod, nesciunt exercitationem maxime delectus neque esse cumque quas iusto suscipit vitae doloremque enim temporibus expedita veritatis quam reprehenderit est similique excepturi aperiam soluta!",
       "price": "1600",
       "duration": "2023-05-22",
       "totalBus": "4",
@@ -253,18 +254,18 @@
     },
     {
       "name": "Rangamati",
-      "description": "dhslfjksdfjsakdfsadfasdf",
+      "description": "Rangamati is the administrative headquarter and town of Rangamati Hill District in the Chittagong Hill Tracts of Bangladesh. The town is located at 22°37'60N 92°12'0E and has an altitude of 14 metres. From Chittagong a 77 kilometres road leads to Rangamati.",
       "thumbnail": "https://www.thegolfhousebd.com/wp-content/uploads/2021/12/222222.png",
       "price": "1200",
       "route": "Dhaka Borishal",
-      "duration": "2023-05-26",
+      "duration": "3D 2N",
       "totalBus": "4",
       "seatPerBUs": "25",
       "id": 3
     },
     {
-      "name": "Rangamati",
-      "description": "dhslfjksdfjsakdfsadfasdf",
+      "name": "Kaptai Leke",
+      "description": "Rangamati is the administrative headquarter and town of Rangamati Hill District in the Chittagong Hill Tracts of Bangladesh. The town is located at 22°37'60N 92°12'0E and has an altitude of 14 metres. From Chittagong a 77 kilometres road leads to Rangamati.",
       "thumbnail": "https://www.thegolfhousebd.com/wp-content/uploads/2021/12/222222.png",
       "price": "1200",
       "route": "Dhaka Borishal",

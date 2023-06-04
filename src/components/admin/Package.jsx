@@ -123,6 +123,9 @@ function Package({ p }) {
             </div>
           </div>
           <SeatOptimiz p={p} />
+          <div className="rounded-lg text-center bg-emerald-300 mr-32 ml-14 p-4">
+            <h2 className="text-white text-2xl mb-2">Total Passenger : {p.totalPassenger}</h2>
+          </div>
         </div>
       </div>
     </div>

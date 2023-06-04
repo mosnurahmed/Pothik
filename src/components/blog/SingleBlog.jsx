@@ -1,5 +1,6 @@
 import React from "react";
 
+
 function SingleBlog({ blog }) {
   const { title, thumbnail, description, date } = blog || {};
   return (
@@ -21,11 +22,11 @@ function SingleBlog({ blog }) {
               <b>{date}</b>
             </p>
           </div>
-          <div>
+          {/* <div>
             <p>
               <b>0 comments</b>
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

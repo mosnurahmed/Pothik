@@ -50,7 +50,7 @@ const Admin = () => {
   return (
     <div>
       <Header />
-      <section className="banner text-6xl font-bold w-10/12 m-auto text-slate-100">
+      <section className="banner text-6xl font-bold w-10/12 m-auto mt-20 text-slate-100">
         <span className="admin_title">Welcome Admin</span>
       </section>
 

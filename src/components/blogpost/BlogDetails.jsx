@@ -34,7 +34,7 @@ function BlogDetails() {
   return (
     <>
        <Header />
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mt-24 mx-auto">
        {content}
       </div>
       <Footer />

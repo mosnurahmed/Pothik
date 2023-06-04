@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useLoginMutation } from "../../feature/auth/authApi";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import "./register.css";
 import { Link } from "react-router-dom";
-
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [responseError, setResponseError] = useState("");
-  const [login, { data, isLoading, error }] = useLoginMutation();
+  const [login, { data, isLoading, error ,isError}] = useLoginMutation();
+
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/login";
 
   const navigate = useNavigate();
 
@@ -29,7 +31,10 @@ function Login() {
       email,
       password,
     });
+  if(!isError){
+     navigate(from, { replace: true })
   };
+}
 
   // return (
   //   <div>
@@ -86,14 +91,15 @@ function Login() {
         <div className="flex items-center justify-between">
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit" disabled={isLoading}
+            type="submit"
+            disabled={isLoading}
           >
             Sign In
           </button>
           <div className="text-gray-500 ml-4">
-         <Link to="/registration">
-         
-         Don't have an account? <span className="underline cursor-pointer">Registration</span></Link>
+            <Link to="/registration">
+              Don't have an account? <span className="underline cursor-pointer">Registration</span>
+            </Link>
           </div>
         </div>
         {responseError && <div className="text-red-500 mb-4">{responseError}</div>}

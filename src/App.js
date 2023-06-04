@@ -10,6 +10,10 @@ import PackageAdd from "./components/admin/PackageAdd";
 import AddBlog from "./components/blogpost/AddBlog";
 import useAuthCheck from "./hooks/useAuthCheck";
 import BlogDetails from "./components/blogpost/BlogDetails";
+import Payment from "./components/payment/Payment";
+import Success from "../src/components/util/Success";
+import PrivateRoute from "./components/util/PrivateRoute";
+import AboutUs from "./components/about/AboutUs";
 const App = () => {
   const isAuthChecked = useAuthCheck();
 
@@ -18,32 +22,118 @@ const App = () => {
   // ) : (
   //   <BrowserRouter>
   //     <Routes>
-  //       <Route path="/admin" element={<Admin />} />
+  //       <Route
+  //         path="/admin"
+  //         element={
+  //           <PrivateRoute>
+  //             <Admin />
+  //           </PrivateRoute>
+  //         }
+  //       />
   //       <Route path="/" element={<Home />} />
   //       <Route path="/blogs" element={<Blogpost />} />
   //       <Route path="/registration" element={<Registration />} />
   //       <Route path="/login" element={<Login />} />
-  //       <Route path="/addPackage" element={<PackageAdd />} />
-  //       <Route path="addBlog" element={<AddBlog />} />
-  //       <Route path="/blogs/:blogId" element={<BlogDetails/>}/>
+  //       <Route
+  //         path="/addPackage"
+  //         element={
+  //           <PrivateRoute>
+  //             <PackageAdd />
+  //           </PrivateRoute>
+  //         }
+  //       />
+  //       <Route
+  //         path="addBlog"
+  //         element={
+  //           <PrivateRoute>
+  //             <AddBlog />
+  //           </PrivateRoute>
+  //         }
+  //       />
+  //       <Route path="/blogs/:blogId" element={<BlogDetails />} />
+  //       <Route
+  //         path="/payment/:packId"
+  //         element={
+  //           <PrivateRoute>
+  //             <Payment />
+  //           </PrivateRoute>
+  //         }
+  //       />
+  //       <Route
+  //         path="/success"
+  //         element={
+  //           <PrivateRoute>
+  //             <Success />
+  //           </PrivateRoute>
+  //         }
+  //       />
+  //       <Route path="/aboutUs" element={<AboutUs/>}/>
   //     </Routes>
   //   </BrowserRouter>
   // );
-  return(<>
-
-    <BrowserRouter>
-       <Routes>
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/blogs" element={<Blogpost />} />
-       <Route path="/registration" element={<Registration />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/addPackage" element={<PackageAdd />} />
-        <Route path="addBlog" element={<AddBlog />} />
-       </Routes>
-     </BrowserRouter>
-  </>
-  )
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+         
+          <Route path="/" element={<Home />} />
+          <Route path="/blogs" element={<Blogpost />} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/login" element={<Login />} />
+          {
+            isAuthChecked && (
+              <>
+               <Route
+            path="/admin"
+            element={
+              <PrivateRoute>
+                <Admin />
+              </PrivateRoute>
+            }
+          />
+              <Route
+            path="/addPackage"
+            element={
+              <PrivateRoute>
+                <PackageAdd />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="addBlog"
+            element={
+              <PrivateRoute>
+                <AddBlog />
+              </PrivateRoute>
+            }
+          />
+          <Route path="/blogs/:blogId" element={<BlogDetails />} />
+          <Route
+            path="/payment/:packId"
+            element={
+              <PrivateRoute>
+                <Payment />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/success"
+            element={
+              <PrivateRoute>
+                <Success />
+              </PrivateRoute>
+            }
+          />
+              
+              </>
+            )
+          }
+ 
+           <Route path="/aboutUs" element={<AboutUs/>}/>
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
 };
 
 export default App;

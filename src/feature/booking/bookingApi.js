@@ -100,7 +100,32 @@ export const bookingApi = apiSlice.injectEndpoints({
         } catch (e) {}
       },
     }),
+    addBooking:builder.mutation({
+      query:(data) =>({
+        url:"/booking",
+        method:"POST",
+        body:data
+      }),
+      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+        const result = await queryFulfilled;
+        const pkg = localStorage.getItem("pkg");
+        const status = localStorage.getItem("status");
+        const statusObj = JSON.parse(status);
+        const pkgObj = JSON.parse(pkg);
+        const { totalPassenger,id } = pkgObj || {};
+
+        let updateTotalPassenger=parseInt(totalPassenger) + parseInt(statusObj.person)
+        pkgObj.totalPassenger = updateTotalPassenger.toString()
+     
+
+        dispatch(
+          addPackageApi.endpoints.updatePackage.initiate({id,data:pkgObj})
+        )
+
+
+      },
+    })
   }),
 });
 
-export const { useGetBookingQuery, updateBooking } = bookingApi;
+export const { useGetBookingQuery, useUpdateBookingMutation,useAddBookingMutation } = bookingApi;

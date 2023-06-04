@@ -48,56 +48,15 @@ function PackageAdd() {
       duration,
       totalBus,
       seatPerBus,
+      totalPassenger:"0"
     };
     addPackage(data);
     reset();
   };
-
-  // return (
-  //   <div>
-  //     <h1>ADD Package</h1>
-  //     <form onSubmit={handlePost}>
-  //       <input type="text" required placeholder="Package Name" value={name} onChange={(e) => setName(e.target.value)} />
-  //       <br />
-  //       <input
-  //         type="text"
-  //         required
-  //         placeholder="Description"
-  //         value={description}
-  //         onChange={(e) => setDescription(e.target.value)}
-  //       />
-  //       <br />
-  //       <input
-  //         type="text"
-  //         required
-  //         placeholder="Thumbnail Link"
-  //         value={thumbnail}
-  //         onChange={(e) => setThumbnail(e.target.value)}
-  //       />
-  //       <br />
-  //       <input type="number" required placeholder="Price" value={price} onChange={(e) => setPrice(e.target.value)} />
-  //       <br />
-  //       <input type="text" required placeholder="Route" value={route} onChange={(e) => setRoute(e.target.value)} />
-  //       <br />
-  //       <input
-  //         type="date"
-  //         required
-  //         placeholder="Duration"
-  //         value={duration}
-  //         onChange={(e) => setDuration(e.target.value)}
-  //       />
-  //       <br />
-  //       <button type="submit" disabled={isLoading}>
-  //         Post
-  //       </button>
-  //     </form>
-  //     <div>{responseError}</div>
-  //   </div>
-  // );
   return (
     <>
       <Header />
-      <div className="container add-pack mx-auto p-4">
+      <div className="container add-blog mx-auto mt-24 p-4">
         <h1 className="text-4xl text-teal-500 text-center font-bold mb-8"> Package Info</h1>
 
         <form className="max-w-lg mx-auto" onSubmit={handlePost}>
@@ -205,7 +164,7 @@ function PackageAdd() {
           </div>
 
           <button type="submit" className="bg-blue-500 text-white font-bold px-6 py-2 rounded">
-            Submit
+            ADD
           </button>
           <div>{responseError}</div>
         </form>

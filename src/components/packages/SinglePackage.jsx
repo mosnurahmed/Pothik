@@ -1,9 +1,10 @@
 import si from "../../assets/single.svg";
 import co from "../../assets/couple.svg";
 import fa from "../../assets/family.svg";
+import { Link } from "react-router-dom";
 
 function SinglePackage({ pack }) {
-  const { name, description, thumbnail, price, duration } = pack || {};
+  const { name, description, thumbnail, price, duration,id } = pack || {};
 
   return (
     <div className="w-2/3 shadow-lg">
@@ -36,11 +37,14 @@ function SinglePackage({ pack }) {
           </p>
         </div>
       </div>
+
+      <Link to={`/payment/${id}`}>
       <button className="w-full bg-[#FFCE0C] text-slate-100 py-2 mt-6">
-        <a className="text-xl" href="#">
+       
           Book Your Tour
-        </a>
+        
       </button>
+      </Link>
     </div>
   );
 }
